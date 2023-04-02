@@ -1,8 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit"
-import authReducer from "../features/authSlice"
-import stockReducer from "../features/stockSlice"
+import { configureStore } from "@reduxjs/toolkit";
+import authReducer from "../features/authSlice";
+import blogReducer from "../features/blogSlice";
 
-import storage from "redux-persist/lib/storage" // defaults to localStorage for web
+import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 
 import {
   persistStore,
@@ -13,19 +13,19 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist"
+} from "redux-persist";
 
 const persistConfig = {
   key: "root",
   storage,
-}
+};
 
-const persistedReducer = persistReducer(persistConfig, authReducer)
+const persistedReducer = persistReducer(persistConfig, authReducer);
 
 const store = configureStore({
   reducer: {
     auth: persistedReducer,
-    stock: stockReducer,
+    blog: blogReducer,
   },
 
   middleware: (getDefaultMiddleware) =>
@@ -35,7 +35,7 @@ const store = configureStore({
       },
     }),
   devTools: process.env.NODE_ENV !== "production",
-})
+});
 
-export const persistor = persistStore(store)
-export default store
+export const persistor = persistStore(store);
+export default store;
