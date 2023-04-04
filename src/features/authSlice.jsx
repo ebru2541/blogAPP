@@ -5,9 +5,13 @@ const authSlice = createSlice({
 
   initialState: {
     currentUser: null,
+    email: null,
+    firstName: null,
+    lastName: null,
+    image: null,
+    password: null,
     loading: false,
     error: false,
-    isAdmin: false,
     token: null,
   },
   reducers: {
@@ -18,7 +22,6 @@ const authSlice = createSlice({
     loginSuccess: (state, { payload }) => {
       state.loading = false;
       state.currentUser = payload?.user?.username;
-      state.isAdmin = payload?.user?.is_superuser;
       state.token = payload?.key;
     },
     logoutSuccess: (state) => {
@@ -30,6 +33,11 @@ const authSlice = createSlice({
       state.loading = false;
       state.currentUser = payload?.username;
       state.token = payload?.token;
+      state.password = payload?.password;
+      state.email = payload?.email;
+      state.firstName = payload?.first_name;
+      state.lastName = payload?.last_name;
+      state.image = payload?.image;
       state.error = false;
     },
     fetchFail: (state) => {

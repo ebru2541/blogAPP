@@ -1,9 +1,17 @@
-
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Box, Button,Grid, Paper } from "@mui/material";
-import { btnStyle, flex, flexJustify, iconStyle } from "../styles/globalStyle";
+import { Box, Button, Grid, Paper } from "@mui/material";
+import {
+  StyleSubmit,
+  btnStyle,
+  flex,
+  flexCenter,
+  flexJustify,
+  iconStyle,
+  textStyle,
+  titleStyle,
+} from "../styles/globalStyle";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -14,67 +22,94 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 export default function Dashboard() {
-  const { getBlogData } = useBlogCall();
+  const { getBlogData, postLike } = useBlogCall();
   const { blogs } = useSelector((state) => state.blog);
 
   useEffect(() => {
-    getBlogData();
+    getBlogData("blogs");
   }, []);
+
   console.log(blogs);
-  //  post_views, title, content, image, author, likes, comment_count;
+
   const navigate = useNavigate();
   return (
     <Grid container sx={flex}>
       {blogs.map((blog) => (
-        <Grid item>
-          <Paper elevation={6} sx={{ maxWidth: 350, height: "400px" }}>
+        <Grid item key={blog.id}>
+          <Paper
+            elevation={6}
+            sx={{ maxWidth: 300, height: "400px", objectFit: "cover", p: 3 }}
+          >
+            <Box>
+              <Box sx={{ display: "flex" }}>
+                <AccountCircleIcon sx={{ fontSize: "1.8rem" }} />
+                <Typography variant="body1">{blog.author}</Typography>
+              </Box>
+
+              <Box>
+                <Typography variant="body2">
+                  {new Date(blog.publish_date).toLocaleDateString()}
+                </Typography>
+              </Box>
+            </Box>
             <CardMedia
               component="img"
               height="140"
-              image={blog?.image}
+              image={blog.image}
               alt="green iguana"
             />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                Lizard
+            <Box sx={{ height: "180px" }}>
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="div"
+                sx={titleStyle}
+              >
+                {blog.title}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica
+              <Typography variant="body2" color="text.secondary" sx={textStyle}>
+                {blog.content}
               </Typography>
-            </CardContent>
-            <CardContent>
-              <Box sx={iconStyle}>
-                <AccountCircleIcon sx={{ fontSize: "1.4rem" }} />
-                <Typography>admin</Typography>
-              </Box>
-
+            </Box>
+            <Box>
               <Box sx={flexJustify}>
                 <Box sx={{ display: "flex", gap: ".6rem" }}>
                   <Box sx={iconStyle}>
-                    <FavoriteIcon />
-                    <Typography>3</Typography>
+                    {blog.likes ? (
+                      <FavoriteIcon
+                        sx={{ color: "red", cursor: "pointer" }}
+                        onClick={() => postLike("likes", blog.id)}
+                      />
+                    ) : (
+                      <FavoriteIcon
+                        sx={{ cursor: "pointer" }}
+                        onClick={() => postLike("likes", blog.id)}
+                      />
+                    )}
+                    <Typography>{blog.likes}</Typography>
                   </Box>
                   <Box sx={iconStyle}>
                     <ChatBubbleOutlineIcon />
-                    <Typography>3</Typography>
+                    <Typography>{blog.comment_count}</Typography>
                   </Box>
                   <Box sx={iconStyle}>
                     <VisibilityIcon />
-                    <Typography>3</Typography>
+                    <Typography>{blog.post_views}</Typography>
                   </Box>
                 </Box>
                 <Box>
                   <Button
-                    sx={btnStyle}
                     variant="contained"
-                    // onClick={() => navigate(`/detail/${id}`)}
+                    sx={StyleSubmit}
+                    onClick={() =>
+                      navigate(`/detail/${blog.id}`, { state: blog })
+                    }
                   >
                     Read More
                   </Button>
                 </Box>
               </Box>
-            </CardContent>
+            </Box>
           </Paper>
         </Grid>
       ))}

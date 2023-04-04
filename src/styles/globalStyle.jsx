@@ -3,16 +3,15 @@ export const flex = {
   justifyContent: "center",
   alignItems: "center",
   gap: 2,
-  mt:3
+  mt: 3,
 };
 
 export const btnStyle = {
-  cursor: "pointer",
-  bgcolor: "#26c6da",
+  bgcolor: "#0d7381",
   "&:hover": {
-    color: "#26c6da",
+    color: "#0d7381",
     bgcolor: "white",
-    border: "2px solid #26c6da",
+    border: "2px solid #0d7381",
   },
 };
 
@@ -25,23 +24,40 @@ export const flexCenter = {
 };
 export const navbarStyle = {
   "& .MuiContainer-root": {
-    backgroundColor: "#1769aa",
+    backgroundColor: "#0c2427",
+    color: "danger",
   },
 };
 
-
 export const iconStyle = {
-   display: "flex", 
-   gap: ".4rem" 
-  };
+  display: "flex",
+  gap: ".4rem",
+};
 
-  export const flexJustify = {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-  };
+export const flexJustify = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  
+};
 
-  export const StyleSubmit = {
-    bgcolor: "#009688",
-    "&:hover": { opacity: ".7", bgcolor: "#009688" },
-  };
+export const StyleSubmit = {
+  bgcolor: "#009688",
+  color: "white",
+  fontSize:".7rem",
+  "&:hover": { opacity: ".7", bgcolor: "#009688" },
+};
+
+export const textStyle = {
+  display: "-webkit-box",
+  WebkitLineClamp: "3",
+  WebkitBoxOrient: "vertical",
+  overflow: "hidden",
+};
+
+export const titleStyle = {
+  whiteSpace: " nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  paddingTop:"1.6rem"
+};

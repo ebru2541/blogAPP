@@ -10,8 +10,10 @@ import {
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
+import useAxios from "./useAxios";
 
 const useAuthCall = () => {
+  const { axiosWithToken } = useAxios();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -60,7 +62,29 @@ const useAuthCall = () => {
     }
   };
 
-  return { login, register, logout };
+  const changePassword = async (info) => {
+    dispatch(fetchStart());
+    try {
+      await axiosWithToken.post(`users/auth/password/change/`,info);
+      toastSuccessNotify(` successfuly change`);
+    } catch (error) {
+      dispatch(fetchFail());
+      toastErrorNotify(` can not be change`);
+    }
+  };
+
+  const changeUserName= async (info) => {
+    dispatch(fetchStart());
+    try {
+      await axiosWithToken.put(`users/auth/user/`, info);
+      toastSuccessNotify(` successfuly change name`);
+    } catch (error) {
+      dispatch(fetchFail());
+      toastErrorNotify(` can not be change name`);
+    }
+  };
+
+  return { login, register, logout, changePassword, changeUserName };
 };
 
 export default useAuthCall;

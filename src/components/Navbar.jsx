@@ -11,10 +11,10 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import { useNavigate } from "react-router-dom";
 import womenIcon from "../assets/women.jpg";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { navbarStyle } from "../styles/globalStyle";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -40,8 +40,9 @@ function Navbar() {
     <AppBar
       position="static"
       xs={{
-        "& .MuiContainer-root": {
-          backgroundColor: "warning",
+        "&.MuiContainer-root": {
+          backgroundColor: "#009688",
+          color: "danger",
         },
       }}
     >
@@ -64,7 +65,7 @@ function Navbar() {
             }}
             onClick={() => navigate("/")}
           >
-            Rose'un Mutfağı
+            {/* Rose'un Mutfağı */}
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -96,24 +97,39 @@ function Navbar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <MenuItem onClick={handleCloseNavMenu}>
+              <MenuItem
+                onClick={() => {
+                  handleCloseNavMenu();
+                  navigate("/");
+                }}
+              >
                 <Typography textAlign="center" variant="button">
                   DashBoard
                 </Typography>
               </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
+              <MenuItem
+                onClick={() => {
+                  handleCloseNavMenu();
+                  navigate("/new-blog");
+                }}
+              >
                 <Typography textAlign="center" variant="button">
                   New Blog
                 </Typography>
               </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
+              <MenuItem
+                onClick={() => {
+                  handleCloseNavMenu();
+                  navigate("/about");
+                }}
+              >
                 <Typography textAlign="center" variant="button">
                   About
                 </Typography>
               </MenuItem>
             </Menu>
           </Box>
-         
+
           <Typography
             variant="h5"
             noWrap
@@ -126,11 +142,10 @@ function Navbar() {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
               textDecoration: "none",
             }}
           >
-            Rose'un Mutfağı
+            {/* Rose'un Mutfağı */}
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Button
@@ -145,7 +160,7 @@ function Navbar() {
             <Button
               onClick={() => {
                 handleCloseNavMenu();
-                navigate("/blog");
+                navigate("/new-blog");
               }}
               sx={{ my: 2, color: "white", display: "block" }}
             >
@@ -166,13 +181,11 @@ function Navbar() {
             <Typography></Typography>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <AccountCircleIcon
-                  sx={{ color: "white", fontSize: "2rem" }}
-                />
+                <AccountCircleIcon sx={{ color: "white", fontSize: "2rem" }} />
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: "45px", fontSize:"1rem" }}
+              sx={{ mt: "45px", fontSize: "1rem" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
@@ -190,7 +203,7 @@ function Navbar() {
               <MenuItem
                 onClick={() => {
                   handleCloseUserMenu();
-                  navigate("/blog");
+                  navigate("/my-blog");
                 }}
               >
                 <Typography textAlign="center">My Blogs</Typography>
