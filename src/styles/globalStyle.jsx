@@ -61,3 +61,10 @@ export const titleStyle = {
   textOverflow: "ellipsis",
   paddingTop:"1.6rem"
 };
+
+
+export const footerStyle = {
+  width: "100%",
+  height: "5px",
+  bgcolor: "#009688",
+};

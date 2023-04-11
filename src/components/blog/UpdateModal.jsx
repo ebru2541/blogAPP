@@ -54,13 +54,14 @@ const UpdateModal = () => {
         handleSubmit,
       }) => (
         <Form onSubmit={handleSubmit}>
-          <Box sx={{ display: "flex", flexDirection: "column", gap: 2, mt: 5 }}>
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 2}}>
             <TextField
               label="password"
               name="new_password1"
               id="new_password1"
               type="password"
               variant="outlined"
+              required
               value={values.new_password1}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -73,6 +74,7 @@ const UpdateModal = () => {
               id="passwordConfirmation"
               type="password"
               variant="outlined"
+              required
               value={values.passwordConfirmation}
               onChange={handleChange}
               onBlur={handleBlur}

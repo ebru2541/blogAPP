@@ -28,7 +28,7 @@ const AppRouter = () => {
           <Route path="about" element={<About />} />
           <Route path="new-blog" element={<NewBlog />} />
           <Route path="profile" element={<Profile />}>
-            <Route index  path="update" element={<UpdateModal />} />
+            <Route index path="update" element={<UpdateModal />} />
             <Route path="delete" element={<DeleteModal />} />
             <Route />
           </Route>

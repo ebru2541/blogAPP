@@ -6,6 +6,7 @@ const blogSlice = createSlice({
   initialState: {
     blogs: [],
     categories: [],
+    blog: [],
     loading: false,
     error: false,
   },
@@ -18,7 +19,7 @@ const blogSlice = createSlice({
       state.loading = false;
       state[url] = data;
     },
-
+  
     fetchFail: (state) => {
       state.loading = false;
       state.error = true;
@@ -26,5 +27,6 @@ const blogSlice = createSlice({
   },
 });
 
-export const { fetchStart, getSuccess, fetchFail } = blogSlice.actions;
+export const { fetchStart, getSuccess, fetchFail, getBlogSuccess } =
+  blogSlice.actions;
 export default blogSlice.reducer;

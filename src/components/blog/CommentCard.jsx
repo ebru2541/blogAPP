@@ -3,8 +3,16 @@ import Avatar from "@mui/material/Avatar";
 import { red } from "@mui/material/colors";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
+import { useEffect } from "react";
+import useBlogCall from "../../hooks/useBlogCall";
 
 const CommentCard = ({ comment }) => {
+  const { getLikeComment, getBlogIdData } = useBlogCall();
+  useEffect(() => {
+    // getLikeComment("blogs", comment.id);
+    // getBlogIdData("blog", comment.id);
+  }, []);
+
   return (
     <Paper
       elevation={7}

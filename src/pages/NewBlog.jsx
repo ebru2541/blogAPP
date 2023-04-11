@@ -37,6 +37,7 @@ const NewBlog = () => {
         onSubmit={(e) => {
           e.preventDefault();
           postBlogData("blogs", info);
+           getBlogData("blogs");
           console.log(info);
           navigate("/");
         }}

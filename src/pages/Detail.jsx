@@ -14,7 +14,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import useBlogCall from "../hooks/useBlogCall";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
@@ -23,15 +23,19 @@ import CommentCard from "../components/blog/CommentCard";
 import CommentForm from "../components/blog/CommentForm";
 
 const Detail = () => {
-  const { state: blog } = useLocation();
+  const { id } = useParams();
   const [toggle, setToggle] = useState(false);
+  const { blog } = useSelector((state) => state.blog);
 
+  const { getBlogIdData } = useBlogCall();
+  useEffect(() => {
+    getBlogIdData("blog", id);
+  }, []);
   return (
-    <Box sx={{ width: "70%", m: "auto", paddingTop:"3" }}>
+    <Box sx={{ width: "70%", m: "auto", paddingTop: "3", mt: 4 }}>
       <Box sx={iconStyle}>
-        <AccountCircleIcon sx={{ fontSize: "2rem", color:"error" }} />
+        <AccountCircleIcon sx={{ fontSize: "2rem", color: "error" }} />
         <Typography>{blog.author}</Typography>
-        
       </Box>
 
       <Box
@@ -75,20 +79,18 @@ const Detail = () => {
         </CardContent>
       </Box>
 
-      {toggle && (
-        <Container
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 3,
-          }}
-        >
-          {blog?.comments?.map((comment) => (
-            <CommentCard comment={comment} key={comment.id} />
-          ))}
-          <CommentForm id={blog?.id} />
-        </Container>
-      )}
+      <Container
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 3,
+        }}
+      >
+        {blog?.comments?.map((comment) => (
+          <CommentCard comment={comment} key={comment.id} />
+        ))}
+        {toggle && <CommentForm id={blog?.id} />}
+      </Container>
     </Box>
   );
 };

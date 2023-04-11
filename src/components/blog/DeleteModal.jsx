@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import useAuthCall from "../../hooks/useAuthCall";
 import Button from "@mui/material/Button";
 import { useState } from "react";
+import { StyleSubmit } from "../../styles/globalStyle";
 
 const DeleteModal = () => {
   const { changeUserName } = useAuthCall();
@@ -19,13 +20,13 @@ const DeleteModal = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     changeUserName(info);
-    console.log(info);
+    setInfo({})
   };
 
   return (
     <Box
       component="form"
-      sx={{ display: "flex", flexDirection: "column", gap: 2, mt: 5 }}
+      sx={{ display: "flex", flexDirection: "column", gap: 2 }}
       onSubmit={handleSubmit}
     >
       <TextField
@@ -36,6 +37,7 @@ const DeleteModal = () => {
         variant="outlined"
         value={info.username || ""}
         onChange={handleChange}
+        required
       />
       <TextField
         label="First Name"
@@ -44,6 +46,7 @@ const DeleteModal = () => {
         type="text"
         variant="outlined"
         value={info.first_name || ""}
+        required
         onChange={handleChange}
       />
       <TextField
@@ -53,10 +56,11 @@ const DeleteModal = () => {
         type="text"
         variant="outlined"
         value={info.last_name || ""}
+        required
         onChange={handleChange}
       />
 
-      <Button type="submit" variant="contained" size="large">
+      <Button type="submit" variant="contained" size="large" sx={StyleSubmit}>
         Submit
       </Button>
     </Box>

@@ -40,6 +40,20 @@ const authSlice = createSlice({
       state.image = payload?.image;
       state.error = false;
     },
+    changeUserSuccess: (state, { payload }) => {
+      state.loading = false;
+      state.currentUser = payload?.username;
+      state.firstName = payload?.first_name;
+      state.lastName = payload?.last_name;
+      state.email = payload?.email;
+      state.error = false;
+    },
+    changePasswordSuccess: (state, { payload }) => {
+      state.loading = false;
+      state.password = payload?.new_password1;
+      state.error = false;
+    },
+
     fetchFail: (state) => {
       state.loading = false;
       state.error = true;
@@ -53,5 +67,7 @@ export const {
   logoutSuccess,
   registerSuccess,
   fetchFail,
+  changeUserSuccess,
+  changePasswordSuccess,
 } = authSlice.actions;
 export default authSlice.reducer;

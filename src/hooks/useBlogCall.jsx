@@ -1,7 +1,12 @@
 // import axios from "axios"
 import { useDispatch } from "react-redux";
 // import { useSelector } from "react-redux"
-import { fetchFail, getSuccess, fetchStart } from "../features/blogSlice";
+import {
+  fetchFail,
+  getSuccess,
+  fetchStart,
+  getBlogSuccess,
+} from "../features/blogSlice";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import useAxios from "./useAxios";
 
@@ -20,19 +25,6 @@ const useBlogCall = () => {
     }
   };
 
-  // const deleteBlogData = async (url, id) => {
-  //   dispatch(fetchStart());
-  //   try {
-  //     await axiosWithToken.delete(`stock/${url}/${id}/`);
-  //     toastSuccessNotify(`${url} successfuly deleted`);
-  //     getBlogData(url);
-  //   } catch (error) {
-  //     console.log(error);
-  //     dispatch(fetchFail());
-  //     toastErrorNotify(`${url} can not be deleted`);
-  //   }
-  // };
-
   const postBlogData = async (url, info) => {
     dispatch(fetchStart());
     try {
@@ -48,9 +40,9 @@ const useBlogCall = () => {
   const getLikeComment = async (url, id) => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken(`api/${url}/${id}/`);
+      const { data } = await axiosWithToken(`api/${url}/${id}/`);
       toastSuccessNotify(` successfuly getlike`);
-      getBlogData("blogs");
+      dispatch(getSuccess({ data, url }));
     } catch (error) {
       dispatch(fetchFail());
     }
@@ -67,7 +59,7 @@ const useBlogCall = () => {
     }
   };
 
-  const postComment = async (url,info) => {
+  const postComment = async (url, info) => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.post(`api/${url}/${info.post}/`, info);
@@ -79,27 +71,27 @@ const useBlogCall = () => {
     }
   };
 
-
-  const putBlogData = async (url, info) => {
+  const getBlogIdData = async (url, id) => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken.put(`stock/${url}/${info.id}/`, info);
-      toastSuccessNotify(`${url} successfuly updated`);
-      getBlogData(url);
+      const { data } = await axiosWithToken(`api/${url}/${id}/`);
+      toastSuccessNotify(` comments successfuly updated`);
+      dispatch(getSuccess({ data, url }));
+      console.log(data);
     } catch (error) {
       console.log(error);
       dispatch(fetchFail());
-      toastErrorNotify(`${url} can not be updated`);
+      toastErrorNotify(`${url} can not be comm`);
     }
   };
 
   return {
     getBlogData,
     postBlogData,
-    putBlogData,
     postLike,
     postComment,
     getLikeComment,
+    getBlogIdData,
   };
 };
 

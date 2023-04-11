@@ -5,6 +5,8 @@ import {
   loginSuccess,
   logoutSuccess,
   registerSuccess,
+  changePasswordSuccess,
+  changeUserSuccess,
 } from "../features/authSlice";
 
 import { useDispatch } from "react-redux";
@@ -65,7 +67,12 @@ const useAuthCall = () => {
   const changePassword = async (info) => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken.post(`users/auth/password/change/`,info);
+      const { data } = await axiosWithToken.post(
+        `users/auth/password/change/`,
+        info
+      );
+      dispatch(changePasswordSuccess(data));
+
       toastSuccessNotify(` successfuly change`);
     } catch (error) {
       dispatch(fetchFail());
@@ -73,10 +80,11 @@ const useAuthCall = () => {
     }
   };
 
-  const changeUserName= async (info) => {
+  const changeUserName = async (info) => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken.put(`users/auth/user/`, info);
+       const { data } =await axiosWithToken.put(`users/auth/user/`, info);
+      dispatch(changeUserSuccess(data));
       toastSuccessNotify(` successfuly change name`);
     } catch (error) {
       dispatch(fetchFail());

@@ -7,12 +7,12 @@ import { StyleSubmit } from "../../styles/globalStyle";
 import { useEffect } from "react";
 
 const CommentForm = ({ id }) => {
-  const { postComment, getBlogData, getLikeComment } = useBlogCall();
+  const { postComment, getBlogData, getBlogIdData } = useBlogCall();
   const [info, setInfo] = useState("");
 
-  useEffect(() => {
-    getBlogData("blogs");
-  }, []);
+  // useEffect(() => {
+  //   getBlogData("blogs");
+  // }, []);
 
   const handleChance = (e) => {
     setInfo({ ...info, post: id, [e.target.name]: e.target.value });
@@ -21,7 +21,7 @@ const CommentForm = ({ id }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     postComment("comments", info);
-    getLikeComment("comments", id);
+     getBlogIdData("blog", id);
 
     console.log(info);
   };

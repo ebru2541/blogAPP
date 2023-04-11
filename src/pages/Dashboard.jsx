@@ -1,12 +1,10 @@
-import CardContent from "@mui/material/CardContent";
+
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Box, Button, Grid, Paper } from "@mui/material";
 import {
   StyleSubmit,
-  btnStyle,
   flex,
-  flexCenter,
   flexJustify,
   iconStyle,
   textStyle,
@@ -22,15 +20,13 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 export default function Dashboard() {
-  const { getBlogData, postLike } = useBlogCall();
+  const { getBlogData, postLike, getBlogIdData, getLikeComment } =
+    useBlogCall();
   const { blogs } = useSelector((state) => state.blog);
-
+console.log(blogs)
   useEffect(() => {
     getBlogData("blogs");
   }, []);
-
-  console.log(blogs);
-
   const navigate = useNavigate();
   return (
     <Grid container sx={flex}>
@@ -78,12 +74,18 @@ export default function Dashboard() {
                     {blog.likes ? (
                       <FavoriteIcon
                         sx={{ color: "red", cursor: "pointer" }}
-                        onClick={() => postLike("likes", blog.id)}
+                        onClick={() => {
+                          postLike("likes", blog.id);
+                          getLikeComment("likes", blog.id);
+                        }}
                       />
                     ) : (
                       <FavoriteIcon
                         sx={{ cursor: "pointer" }}
-                        onClick={() => postLike("likes", blog.id)}
+                        onClick={() => {
+                          postLike("likes", blog.id);
+                          getLikeComment("likes", blog.id);
+                        }}
                       />
                     )}
                     <Typography>{blog.likes}</Typography>
@@ -101,9 +103,10 @@ export default function Dashboard() {
                   <Button
                     variant="contained"
                     sx={StyleSubmit}
-                    onClick={() =>
-                      navigate(`/detail/${blog.id}`, { state: blog })
-                    }
+                    onClick={() => {
+                      navigate(`/detail/${blog.id}`);
+                      getBlogIdData("blogs", blog.id);
+                    }}
                   >
                     Read More
                   </Button>

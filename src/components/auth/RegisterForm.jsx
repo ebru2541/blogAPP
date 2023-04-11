@@ -15,6 +15,7 @@ export const registerSchema = object({
     .required(),
 
   email: string().email().required(),
+  image:string().required(),
   password: string()
     .required("password zorunludur")
     .min(8, "password en az 8 karakter olmalıdır")
@@ -77,6 +78,18 @@ const SignUpForm = ({ values, handleChange, errors, touched, handleBlur }) => {
             onBlur={handleBlur}
             helperText={touched.email && errors.email}
             error={touched.email && Boolean(errors.email)}
+          />
+          <TextField
+            label="Image"
+            name="image"
+            id="image"
+            type="url"
+            variant="outlined"
+            value={values.image}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            helperText={touched.image && errors.image}
+            error={touched.image && Boolean(errors.image)}
           />
           <TextField
             label="password"
