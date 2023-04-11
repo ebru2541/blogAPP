@@ -23,6 +23,8 @@ export default function Dashboard() {
   const { getBlogData, postLike, getBlogIdData, getLikeComment } =
     useBlogCall();
   const { blogs } = useSelector((state) => state.blog);
+   const { token } = useSelector((state) => state.auth);
+   console.log(token)
 console.log(blogs)
   useEffect(() => {
     getBlogData("blogs");
@@ -34,7 +36,7 @@ console.log(blogs)
         <Grid item key={blog.id}>
           <Paper
             elevation={6}
-            sx={{ maxWidth: 300, height: "400px", objectFit: "cover", p: 3 }}
+            sx={{ maxWidth: 300,minWidth:300, height: "400px", objectFit: "cover", p: 3 }}
           >
             <Box>
               <Box sx={{ display: "flex" }}>
@@ -76,7 +78,7 @@ console.log(blogs)
                         sx={{ color: "red", cursor: "pointer" }}
                         onClick={() => {
                           postLike("likes", blog.id);
-                          getLikeComment("likes", blog.id);
+                          getBlogData("blogs");
                         }}
                       />
                     ) : (
@@ -84,7 +86,7 @@ console.log(blogs)
                         sx={{ cursor: "pointer" }}
                         onClick={() => {
                           postLike("likes", blog.id);
-                          getLikeComment("likes", blog.id);
+                          getBlogData("blogs");
                         }}
                       />
                     )}
@@ -105,7 +107,7 @@ console.log(blogs)
                     sx={StyleSubmit}
                     onClick={() => {
                       navigate(`/detail/${blog.id}`);
-                      getBlogIdData("blogs", blog.id);
+                      getBlogIdData("blog", blog.id);
                     }}
                   >
                     Read More

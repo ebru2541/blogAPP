@@ -11,7 +11,6 @@ import About from "../pages/About";
 import NewBlog from "../pages/NewBlog";
 import NotFound from "../pages/NotFound";
 import Profile from "../pages/Profile";
-import MyBlog from "../pages/MyBlog";
 import UpdateModal from "../components/blog/UpdateModal";
 import DeleteModal from "../components/blog/DeleteModal";
 
@@ -32,7 +31,6 @@ const AppRouter = () => {
             <Route path="delete" element={<DeleteModal />} />
             <Route />
           </Route>
-          <Route path="my-blog" element={<MyBlog />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

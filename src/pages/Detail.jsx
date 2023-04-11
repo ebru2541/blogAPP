@@ -25,14 +25,16 @@ import CommentForm from "../components/blog/CommentForm";
 const Detail = () => {
   const { id } = useParams();
   const [toggle, setToggle] = useState(false);
-  const { blog } = useSelector((state) => state.blog);
+  const { blogs, blog } = useSelector((state) => state.blog);
+  console.log(id);
 
+  console.log(blog);
   const { getBlogIdData } = useBlogCall();
   useEffect(() => {
     getBlogIdData("blog", id);
   }, []);
   return (
-    <Box sx={{ width: "70%", m: "auto", paddingTop: "3", mt: 4 }}>
+    <Box sx={{ width: "80%", m: "auto", paddingTop: "3", mt: 4 }}>
       <Box sx={iconStyle}>
         <AccountCircleIcon sx={{ fontSize: "2rem", color: "error" }} />
         <Typography>{blog.author}</Typography>
@@ -68,7 +70,12 @@ const Detail = () => {
               <Typography>{blog.likes}</Typography>
             </Box>
             <Box sx={iconStyle}>
-              <ChatBubbleOutlineIcon onClick={() => setToggle(!toggle)} />
+              <ChatBubbleOutlineIcon
+                onClick={() => {
+                  setToggle(!toggle);
+                  getBlogIdData("blog", id);
+                }}
+              />
               <Typography>{blog.comment_count}</Typography>
             </Box>
             <Box sx={iconStyle}>
@@ -86,9 +93,19 @@ const Detail = () => {
           gap: 3,
         }}
       >
-        {blog?.comments?.map((comment) => (
-          <CommentCard comment={comment} key={comment.id} />
-        ))}
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap:"wrap",
+            gap: 3,
+            justifyContent:"center"
+          }}
+        >
+          {blog?.comments?.map((comment) => (
+            <CommentCard comment={comment} key={comment.id} />
+          ))}
+        </Box>
+
         {toggle && <CommentForm id={blog?.id} />}
       </Container>
     </Box>

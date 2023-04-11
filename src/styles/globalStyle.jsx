@@ -31,7 +31,7 @@ export const navbarStyle = {
 
 export const iconStyle = {
   display: "flex",
-  gap: ".4rem",
+  gap: ".2rem",
 };
 
 export const flexJustify = {

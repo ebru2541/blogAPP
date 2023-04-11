@@ -5,47 +5,54 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import { useEffect } from "react";
 import useBlogCall from "../../hooks/useBlogCall";
+import { useSelector } from "react-redux";
 
 const CommentCard = ({ comment }) => {
   const { getLikeComment, getBlogIdData } = useBlogCall();
+ 
   useEffect(() => {
     // getLikeComment("blogs", comment.id);
     // getBlogIdData("blog", comment.id);
   }, []);
 
   return (
-    <Paper
-      elevation={7}
-      sx={{
-        padding: 3,
-      }}
-    >
-      <Box
-        component="header"
+   
+      <Paper
+        elevation={7}
         sx={{
+          padding: 3,
+          width: "40%",
           display: "flex",
-          alignItems: "center",
-          gap: 2,
+          flexDirection: "row",
         }}
       >
-        <Avatar
-          aria-label="avatar"
-          sx={{ color: "error", backgroundClor: "error" }}
+        <Box
+          component="header"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 2,
+          }}
         >
-          {comment.user}
-        </Avatar>
-        <Box>
-          <Typography variant="body1">
-            {new Date(comment.time_stamp).toLocaleString()}
-          </Typography>
-          <Typography variant="body1">{comment.user}</Typography>
-
+          <Avatar
+            aria-label="avatar"
+            sx={{ color: "error", backgroundClor: "error" }}
+          >
+            {comment.user}
+          </Avatar>
           <Box>
-            <Typography>{comment.content}</Typography>
+            <Typography variant="body1">
+              {new Date(comment.time_stamp).toLocaleString()}
+            </Typography>
+            <Typography variant="body1">{comment.user}</Typography>
+
+            <Box>
+              <Typography>{comment.content}</Typography>
+            </Box>
           </Box>
         </Box>
-      </Box>
-    </Paper>
+      </Paper>
+   
   );
 };
 

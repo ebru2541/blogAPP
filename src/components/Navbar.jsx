@@ -200,14 +200,7 @@ function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem
-                onClick={() => {
-                  handleCloseUserMenu();
-                  navigate("/my-blog");
-                }}
-              >
-                <Typography textAlign="center">My Blogs</Typography>
-              </MenuItem>
+             
               <MenuItem
                 onClick={() => {
                   handleCloseUserMenu();
