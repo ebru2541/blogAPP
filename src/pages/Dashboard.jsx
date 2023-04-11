@@ -1,4 +1,3 @@
-
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Box, Button, Grid, Paper } from "@mui/material";
@@ -20,12 +19,9 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 export default function Dashboard() {
-  const { getBlogData, postLike, getBlogIdData, getLikeComment } =
-    useBlogCall();
+  const { getBlogData, postLike, getBlogIdData } = useBlogCall();
   const { blogs } = useSelector((state) => state.blog);
-   const { token } = useSelector((state) => state.auth);
-   console.log(token)
-console.log(blogs)
+
   useEffect(() => {
     getBlogData("blogs");
   }, []);
@@ -36,7 +32,13 @@ console.log(blogs)
         <Grid item key={blog.id}>
           <Paper
             elevation={6}
-            sx={{ maxWidth: 300,minWidth:300, height: "400px", objectFit: "cover", p: 3 }}
+            sx={{
+              maxWidth: 300,
+              minWidth: 300,
+              height: "400px",
+              objectFit: "cover",
+              p: 3,
+            }}
           >
             <Box>
               <Box sx={{ display: "flex" }}>

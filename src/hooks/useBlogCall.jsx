@@ -2,7 +2,7 @@
 import { useDispatch } from "react-redux";
 // import { useSelector } from "react-redux"
 import { fetchFail, getSuccess, fetchStart } from "../features/blogSlice";
-import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
+import { toastSuccessNotify } from "../helper/ToastNotify";
 import useAxios from "./useAxios";
 
 const useBlogCall = () => {

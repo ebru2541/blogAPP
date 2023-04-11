@@ -12,9 +12,9 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
-import womenIcon from "../assets/women.jpg";
+import womenIcon from "../assets/womann.jpg";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { navbarStyle } from "../styles/globalStyle";
+
 
 function Navbar() {
   const navigate = useNavigate();
@@ -64,9 +64,7 @@ function Navbar() {
               fontSize: "1.7rem",
             }}
             onClick={() => navigate("/")}
-          >
-            {/* Rose'un Mutfağı */}
-          </Typography>
+          ></Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -144,9 +142,7 @@ function Navbar() {
               letterSpacing: ".3rem",
               textDecoration: "none",
             }}
-          >
-            {/* Rose'un Mutfağı */}
-          </Typography>
+          ></Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Button
               onClick={() => {
@@ -200,7 +196,6 @@ function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-             
               <MenuItem
                 onClick={() => {
                   handleCloseUserMenu();

@@ -12,7 +12,7 @@ const CommentForm = ({ id }) => {
 
   useEffect(() => {
     getBlogData("blogs");
-  }, []);
+  }, [info]);
 
   const handleChance = (e) => {
     setInfo({ ...info, post: id, [e.target.name]: e.target.value });
