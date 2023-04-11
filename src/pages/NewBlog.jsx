@@ -65,7 +65,7 @@ const NewBlog = () => {
 
         <TextField
           id="category"
-          value={info.category || 1}
+          value={info.category || ""}
           onChange={handleChange}
           label="categories"
           name="category"

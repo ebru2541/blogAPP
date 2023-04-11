@@ -1,20 +1,12 @@
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Box, Button, Container, Grid, Paper } from "@mui/material";
-import {
-  btnStyle,
-  flex,
-  flexJustify,
-  iconStyle,
-  textStyle,
-  titleStyle,
-} from "../styles/globalStyle";
+import { Box, Container } from "@mui/material";
+import { iconStyle } from "../styles/globalStyle";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useBlogCall from "../hooks/useBlogCall";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
@@ -25,10 +17,7 @@ import CommentForm from "../components/blog/CommentForm";
 const Detail = () => {
   const { id } = useParams();
   const [toggle, setToggle] = useState(false);
-  const { blogs, blog } = useSelector((state) => state.blog);
-  console.log(id);
-
-  console.log(blog);
+  const { blog } = useSelector((state) => state.blog);
   const { getBlogIdData } = useBlogCall();
   useEffect(() => {
     getBlogIdData("blog", id);
@@ -96,9 +85,9 @@ const Detail = () => {
         <Box
           sx={{
             display: "flex",
-            flexWrap:"wrap",
+            flexWrap: "wrap",
             gap: 3,
-            justifyContent:"center"
+            justifyContent: "center",
           }}
         >
           {blog?.comments?.map((comment) => (

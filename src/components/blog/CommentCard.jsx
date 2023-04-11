@@ -2,11 +2,16 @@ import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
+import { useEffect } from "react";
+import useBlogCall from "../../hooks/useBlogCall";
 
 
 
 const CommentCard = ({ comment }) => {
-
+   const { getBlogIdData } = useBlogCall();
+  useEffect(() => {
+    getBlogIdData("blog", comment.id);
+  }, []);
   return (
    
       <Paper
