@@ -10,7 +10,13 @@ import { useNavigate } from "react-router-dom";
 
 const NewBlog = () => {
   const { getBlogData, postBlogData } = useBlogCall();
-  const [info, setInfo] = useState([]);
+  const [info, setInfo] = useState({
+    title: "",
+    image: "",
+    status: "",
+    category: "",
+    content: "",
+  });
 
   const { categories } = useSelector((props) => props.blog);
   const navigate = useNavigate();

@@ -13,11 +13,13 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 import womenIcon from "../assets/womann.jpg";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-
+import { useSelector } from "react-redux";
+import { deepOrange } from "@mui/material/colors";
+import { navbarStyle } from "../styles/globalStyle";
 
 function Navbar() {
   const navigate = useNavigate();
+  const { currentUser, image } = useSelector((state) => state.auth);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -37,15 +39,7 @@ function Navbar() {
   };
 
   return (
-    <AppBar
-      position="static"
-      xs={{
-        "&.MuiContainer-root": {
-          backgroundColor: "#009688",
-          color: "danger",
-        },
-      }}
-    >
+    <AppBar position="static" sx={navbarStyle}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Avatar alt="chef-icon" src={womenIcon} />
@@ -174,12 +168,21 @@ function Navbar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Typography></Typography>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <AccountCircleIcon sx={{ color: "white", fontSize: "2rem" }} />
-              </IconButton>
-            </Tooltip>
+            <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+              <Typography>{currentUser}</Typography>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar
+                    src={image}
+                    sx={{ bgcolor: deepOrange[500] }}
+                  ></Avatar>
+                  {/* <AccountCircleIcon
+                    sx={{ color: "white", fontSize: "2rem" }}
+                  /> */}
+                </IconButton>
+              </Tooltip>
+            </Box>
+
             <Menu
               sx={{ mt: "45px", fontSize: "1rem" }}
               id="menu-appbar"

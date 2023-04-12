@@ -4,7 +4,7 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import LockIcon from "@mui/icons-material/Lock";
-import image from "../assets/istoc.jpg";
+import image from "../assets/womann.jpg";
 import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import useAuthCall from "../hooks/useAuthCall";

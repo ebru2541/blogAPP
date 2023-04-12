@@ -38,6 +38,7 @@ const useBlogCall = () => {
       const { data } = await axiosWithToken(`api/${url}/${id}/`);
       // toastSuccessNotify(` successfuly getlike`);
       dispatch(getSuccess({ data, url }));
+      getBlogIdData("blog", id);
     } catch (error) {
       dispatch(fetchFail());
     }
@@ -46,7 +47,7 @@ const useBlogCall = () => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.post(`api/${url}/${id}/`);
-      getLikeComment(url, id);
+
       // toastSuccessNotify(`${url} successfuly posted`);
     } catch (error) {
       dispatch(fetchFail());
@@ -59,7 +60,7 @@ const useBlogCall = () => {
     try {
       await axiosWithToken.post(`api/${url}/${info.post}/`, info);
       toastSuccessNotify(` successfuly comment post`);
-      getLikeComment(url, info.post);
+      getBlogIdData("blog", info.post);
     } catch (error) {
       dispatch(fetchFail());
       // toastErrorNotify(` can not be updated`);

@@ -1,3 +1,5 @@
+import { blueGrey } from "@mui/material/colors";
+
 export const flex = {
   display: "flex",
   justifyContent: "center",
@@ -23,8 +25,8 @@ export const flexCenter = {
   gap: 2,
 };
 export const navbarStyle = {
-  "& .MuiContainer-root": {
-    backgroundColor: "#0c2427",
+  "& .MuiPaper-root": {
+    backgroundColor: "#0d7381",
     color: "danger",
   },
 };
