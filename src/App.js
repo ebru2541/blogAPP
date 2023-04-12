@@ -4,7 +4,7 @@ import store, { persistor } from "./app/store";
 import { ToastContainer } from "react-toastify";
 import { PersistGate } from "redux-persist/integration/react";
 import { ThemeProvider, createTheme } from "@mui/material";
-import { blueGrey, green, grey, teal } from "@mui/material/colors";
+import { blueGrey,teal } from "@mui/material/colors";
 
 function App() {
   const theme = createTheme({
