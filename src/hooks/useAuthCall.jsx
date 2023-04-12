@@ -83,7 +83,7 @@ const useAuthCall = () => {
   const changeUserName = async (info) => {
     dispatch(fetchStart());
     try {
-       const { data } =await axiosWithToken.put(`users/auth/user/`, info);
+      const { data } = await axiosWithToken.put(`users/auth/user/`, info);
       dispatch(changeUserSuccess(data));
       toastSuccessNotify(` successfuly change name`);
     } catch (error) {

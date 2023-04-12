@@ -213,7 +213,6 @@ function Navbar() {
                 onClick={() => {
                   handleCloseUserMenu();
                   logout();
-                  navigate("/login");
                 }}
               >
                 <Typography textAlign="center">Logout</Typography>
