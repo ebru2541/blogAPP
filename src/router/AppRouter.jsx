@@ -19,12 +19,13 @@ const AppRouter = () => {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Dashboard />} />
         <Route path="login" element={<Login />} />
+        <Route path="about" element={<About />} />
         <Route path="register" element={<Register />} />
+        <Route path="/" element={<Dashboard />} />
+
         <Route path="" element={<PrivateRouter />}>
           <Route path="/detail/:id" element={<Detail />} />
-          <Route path="about" element={<About />} />
           <Route path="new-blog" element={<NewBlog />} />
           <Route path="profile" element={<Profile />}>
             <Route index path="update" element={<UpdateModal />} />

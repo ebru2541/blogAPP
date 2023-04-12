@@ -27,7 +27,9 @@ const authSlice = createSlice({
     logoutSuccess: (state) => {
       state.loading = false;
       state.currentUser = null;
-      state.token = null;
+      state.email = null;
+      state.image = null;
+      // state.token = null;
     },
     registerSuccess: (state, { payload }) => {
       state.loading = false;

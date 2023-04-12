@@ -47,7 +47,7 @@ const useBlogCall = () => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.post(`api/${url}/${id}/`);
-
+      getBlogIdData("blog", id);
       // toastSuccessNotify(`${url} successfuly posted`);
     } catch (error) {
       dispatch(fetchFail());

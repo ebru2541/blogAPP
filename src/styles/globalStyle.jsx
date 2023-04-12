@@ -1,5 +1,3 @@
-import { blueGrey } from "@mui/material/colors";
-
 export const flex = {
   display: "flex",
   justifyContent: "center",
@@ -40,13 +38,12 @@ export const flexJustify = {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  
 };
 
 export const StyleSubmit = {
   bgcolor: "#009688",
   color: "white",
-  fontSize:".7rem",
+  fontSize: ".7rem",
   "&:hover": { opacity: ".7", bgcolor: "#009688" },
 };
 
@@ -61,9 +58,8 @@ export const titleStyle = {
   whiteSpace: " nowrap",
   overflow: "hidden",
   textOverflow: "ellipsis",
-  paddingTop:"1.6rem"
+  paddingTop: "1.6rem",
 };
-
 
 export const footerStyle = {
   width: "100%",

@@ -25,6 +25,7 @@ export default function Dashboard() {
   useEffect(() => {
     getBlogData("blogs");
   }, []);
+  
   const navigate = useNavigate();
   return (
     <Grid container sx={flex}>

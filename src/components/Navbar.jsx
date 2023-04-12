@@ -16,12 +16,14 @@ import womenIcon from "../assets/womann.jpg";
 import { useSelector } from "react-redux";
 import { deepOrange } from "@mui/material/colors";
 import { navbarStyle } from "../styles/globalStyle";
+import useAuthCall from "../hooks/useAuthCall";
 
 function Navbar() {
   const navigate = useNavigate();
   const { currentUser, image } = useSelector((state) => state.auth);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const { logout } = useAuthCall();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -210,6 +212,7 @@ function Navbar() {
               <MenuItem
                 onClick={() => {
                   handleCloseUserMenu();
+                  logout();
                   navigate("/login");
                 }}
               >
