@@ -91,7 +91,6 @@ const NewBlog = () => {
           id="status"
           value={info.status || ""}
           onChange={handleChange}
-          autoWidth
           label="Status"
           name="status"
           select
