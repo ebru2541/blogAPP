@@ -18,22 +18,28 @@ import useBlogCall from "../hooks/useBlogCall";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import loadImg from "../assets/loading.gif";
+import Switch from "./Switch";
+import { lightTheme } from "../styles/theme";
 
-export default function Dashboard() {
+export default function Dashboard({ theme, setTheme }) {
   const { getBlogData, postLike, getBlogIdData } = useBlogCall();
   const { blogs, loading } = useSelector((state) => state.blog);
 
   useEffect(() => {
     getBlogData("blogs");
   }, []);
+  const color = theme === lightTheme ? "white" : "#b0bec5";
 
+  console.log(color);
   const navigate = useNavigate();
   return (
-    <>
-      {loading &&  <Box display="flex" justifyContent="center">
+    <Box bgcolor={color}>
+      {loading && (
+        <Box display="flex" justifyContent="center">
           <img src={loadImg} alt="My Image" width="350px" />
-        </Box>}
-
+        </Box>
+      )}
+      <Switch theme={theme} setTheme={setTheme} />
       {!loading && (
         <Grid container sx={flex}>
           {blogs.map((blog) => (
@@ -118,7 +124,12 @@ export default function Dashboard() {
                     <Box>
                       <Button
                         variant="contained"
-                        sx={StyleSubmit}
+                        sx={{
+                          bgcolor: theme.primary,
+                          color: "white",
+                          fontSize: ".7rem",
+                          "&:hover": { opacity: ".7", bgcolor: "#009688" },
+                        }}
                         onClick={() => {
                           navigate(`/detail/${blog.id}`);
                           getBlogIdData("blog", blog.id);
@@ -134,6 +145,6 @@ export default function Dashboard() {
           ))}
         </Grid>
       )}
-    </>
+    </Box>
   );
 }

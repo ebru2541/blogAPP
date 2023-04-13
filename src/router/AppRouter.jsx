@@ -14,7 +14,7 @@ import Profile from "../pages/Profile";
 import UpdateModal from "../components/blog/UpdateModal";
 import DeleteModal from "../components/blog/DeleteModal";
 
-const AppRouter = () => {
+const AppRouter = ({ theme, setTheme }) => {
   return (
     <Router>
       <Navbar />
@@ -22,7 +22,10 @@ const AppRouter = () => {
         <Route path="login" element={<Login />} />
         <Route path="about" element={<About />} />
         <Route path="register" element={<Register />} />
-        <Route path="/" element={<Dashboard />} />
+        <Route
+          path="/"
+          element={<Dashboard theme={theme} setTheme={setTheme} />}
+        />
 
         <Route path="" element={<PrivateRouter />}>
           <Route path="/detail/:id" element={<Detail />} />
