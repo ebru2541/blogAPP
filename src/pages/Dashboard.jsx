@@ -33,9 +33,7 @@ export default function Dashboard() {
       {loading &&  <Box display="flex" justifyContent="center">
           <img src={loadImg} alt="My Image" width="350px" />
         </Box>}
- {loading && (
-       
-      )}
+
       {!loading && (
         <Grid container sx={flex}>
           {blogs.map((blog) => (
