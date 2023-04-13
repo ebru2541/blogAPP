@@ -30,11 +30,11 @@ export default function Dashboard() {
   const navigate = useNavigate();
   return (
     <>
-      {loading && <img src={loadImg} alt="loading" />}
- {loading && (
-        <Box display="flex" justifyContent="center">
+      {loading &&  <Box display="flex" justifyContent="center">
           <img src={loadImg} alt="My Image" width="350px" />
-        </Box>
+        </Box>}
+ {loading && (
+       
       )}
       {!loading && (
         <Grid container sx={flex}>
