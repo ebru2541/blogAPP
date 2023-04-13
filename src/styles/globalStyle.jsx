@@ -66,3 +66,8 @@ export const footerStyle = {
   height: "5px",
   bgcolor: "#009688",
 };
+export const loadStyle = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+};
