@@ -31,6 +31,11 @@ export default function Dashboard() {
   return (
     <>
       {loading && <img src={loadImg} alt="loading" />}
+ {loading && (
+        <Box display="flex" justifyContent="center">
+          <img src={loadImg} alt="My Image" width="350px" />
+        </Box>
+      )}
       {!loading && (
         <Grid container sx={flex}>
           {blogs.map((blog) => (
