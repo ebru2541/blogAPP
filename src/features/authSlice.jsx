@@ -12,7 +12,7 @@ const authSlice = createSlice({
     password: null,
     loading: false,
     error: false,
-    token: null,
+    token: "0cf01d0f07118ff554256d02c86a96c3ffd5cc1d",
   },
   reducers: {
     fetchStart: (state) => {
