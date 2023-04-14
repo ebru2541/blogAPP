@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import useBlogCall from "../hooks/useBlogCall";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { lightTheme } from "../styles/theme";
+
 
 const NewBlog = () => {
   const { getBlogData, postBlogData } = useBlogCall();
