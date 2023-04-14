@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import useBlogCall from "../hooks/useBlogCall";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { lightTheme } from "../styles/theme";
 
 const NewBlog = () => {
   const { getBlogData, postBlogData } = useBlogCall();
@@ -16,7 +17,7 @@ const NewBlog = () => {
     category: "",
     content: "",
   });
-
+ 
   const { categories } = useSelector((props) => props.blog);
   const navigate = useNavigate();
   useEffect(() => {
@@ -31,8 +32,14 @@ const NewBlog = () => {
 
   return (
     <Paper
+      
       elevation={8}
-      sx={{ width: "350px", padding: "2rem", m: "auto", mt: 5 }}
+      sx={{
+        width: "350px",
+        padding: "2rem",
+        m: "auto",
+        mt: 5,
+      }}
     >
       <Typography>New Blog</Typography>
 

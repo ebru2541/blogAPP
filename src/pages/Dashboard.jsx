@@ -39,7 +39,7 @@ export default function Dashboard({ theme, setTheme }) {
           <img src={loadImg} alt="My Image" width="350px" />
         </Box>
       )}
-      <Switch theme={theme} setTheme={setTheme} />
+      {/* <Switch theme={theme} setTheme={setTheme} /> */}
       {!loading && (
         <Grid container sx={flex}>
           {blogs.map((blog) => (

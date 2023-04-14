@@ -19,7 +19,12 @@ const AppRouter = ({ theme, setTheme }) => {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="login" element={<Login />} />
+        <Route
+          path="login"
+          element={<Login />}
+          theme={theme}
+          setTheme={setTheme}
+        />
         <Route path="about" element={<About />} />
         <Route path="register" element={<Register />} />
         <Route
