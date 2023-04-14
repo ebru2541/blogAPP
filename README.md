@@ -60,7 +60,7 @@
 
 ![blog](https://user-images.githubusercontent.com/118957608/229952610-c4412365-f92c-4c49-b4fc-cbd0418591f1.gif)
 
-<img width="1430" alt="Ekran Resmi 2023-04-05 03 20 52" src="https://user-images.githubusercontent.com/118957608/229966534-c7e1dc29-6a8a-40b7-8a7a-bd6697dbb3dc.png">
+
 
 
 
