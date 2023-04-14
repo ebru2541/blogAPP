@@ -58,7 +58,7 @@
 - `@emotion/react`
 - `@emotion/styled`
 
-![blog](https://blog-mui-redux.vercel.app/)
+![blog](blog-mui-redux.gif)
 
 
 
