@@ -58,7 +58,7 @@
 - `@emotion/react`
 - `@emotion/styled`
 
-![blog](blog-mui-redux.gif)
+![blog](https://github.com/ebru2541/blogApp/blob/master/src/blog-mui-redux.gif)
 
 
 
