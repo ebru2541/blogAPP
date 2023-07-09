@@ -201,22 +201,48 @@ function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem
-                onClick={() => {
-                  handleCloseUserMenu();
-                  navigate("/profile");
-                }}
-              >
-                <Typography textAlign="center">Profile</Typography>
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  handleCloseUserMenu();
-                  logout();
-                }}
-              >
-                <Typography textAlign="center">Logout</Typography>
-              </MenuItem>
+              {currentUser && (
+                <MenuItem
+                  onClick={() => {
+                    handleCloseUserMenu();
+                    navigate("/profile");
+                  }}
+                >
+                  <Typography textAlign="center">Profile</Typography>
+                </MenuItem>
+              )}
+
+              {!currentUser && (
+                <MenuItem
+                  onClick={() => {
+                    handleCloseUserMenu();
+                    navigate("/register");
+                  }}
+                >
+                  <Typography textAlign="center">Register</Typography>
+                </MenuItem>
+              )}
+              {!currentUser && (
+                <MenuItem
+                  onClick={() => {
+                    handleCloseUserMenu();
+                    navigate("/login");
+                  }}
+                >
+                  <Typography textAlign="center">Login</Typography>
+                </MenuItem>
+              )}
+
+              {currentUser && (
+                <MenuItem
+                  onClick={() => {
+                    handleCloseUserMenu();
+                    logout();
+                  }}
+                >
+                  <Typography textAlign="center">Logout</Typography>
+                </MenuItem>
+              )}
             </Menu>
           </Box>
         </Toolbar>

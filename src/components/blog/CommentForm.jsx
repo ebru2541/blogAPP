@@ -14,7 +14,7 @@ const CommentForm = ({ id }) => {
     getBlogData("blogs");
   }, []);
 
-  const handleChance = (e) => {
+  const handleChange = (e) => {
     setInfo({ ...info, post: id, [e.target.name]: e.target.value });
   };
 
@@ -45,7 +45,7 @@ const CommentForm = ({ id }) => {
           rows={2}
           fullWidth
           placeholder="Add a comment"
-          onChange={handleChance}
+          onChange={handleChange}
         />
         <Button type="submit" sx={StyleSubmit}>
           Add Comment

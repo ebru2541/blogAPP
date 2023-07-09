@@ -2,7 +2,6 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Box, Button, Grid, Paper } from "@mui/material";
 import {
-  
   flex,
   flexJustify,
   iconStyle,
@@ -18,7 +17,7 @@ import useBlogCall from "../hooks/useBlogCall";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import loadImg from "../assets/loading.gif";
-import Switch from "./Switch";
+
 import { lightTheme } from "../styles/theme";
 
 export default function Dashboard({ theme, setTheme }) {
@@ -31,6 +30,7 @@ export default function Dashboard({ theme, setTheme }) {
   const color = theme === lightTheme ? "white" : "#b0bec5";
 
   console.log(color);
+  console.log(blogs);
   const navigate = useNavigate();
   return (
     <Box bgcolor={color}>
